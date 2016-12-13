@@ -4,6 +4,6 @@ UPDATE- Adds a currently available release of AquaConsole- Usage: cd <aquaconsol
 NYAN- Cat
 CHEESE
 
-This plugin depends on Ionic.Zip which is distributed with the program but must be re-referred to in VS
+This plugin depends on Ionic.Zip which is distributed with the program but must be re-referred to in VS. Ionic should then be         included with the plugin in the Plugins folder. AquaConsole will not recognise Ionic.Zip as a plugin.
 There are no exceptions in this plugin so errors in syntax or IO will lead to crash
 -Zack
