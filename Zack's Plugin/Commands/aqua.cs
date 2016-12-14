@@ -23,15 +23,16 @@ namespace AquaConsole.Commands
             }
         }
 
-        public void CommandMethod(string p)
+        public void CommandMethod(string[] p)
         {
-            if (Utility.FileOrDirectoryExists(p))
+            string cheese = (string.Join("", p));
+            if (Utility.FileOrDirectoryExists(cheese))
             {
                 List<List<string>> groups = new List<List<string>>();
-                foreach (var line in File.ReadAllLines(p))
+                foreach (var line in File.ReadAllLines(cheese))
                 {
                     string AquaConsoleExe = (Directory.GetCurrentDirectory() + "\\AquaConsole.exe");
-                    string[] readText = File.ReadAllLines(p);
+                    string[] readText = File.ReadAllLines(cheese);
 
                     Process ac = new Process();
                     ac.StartInfo.FileName = AquaConsoleExe;
