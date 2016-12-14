@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Zack's Plugin")]
 [assembly: AssemblyDescription("A plugin for AquaConsole")]
-[assembly: AssemblyConfiguration("Release")]
+[assembly: AssemblyConfiguration("Dev")]
 [assembly: AssemblyCompany("Isaac Howie")]
 [assembly: AssemblyProduct("Zack's Plugin")]
 [assembly: AssemblyCopyright("Copyright ©  2016 Isaac Howie with special thanks to DotNetZip")]
@@ -22,15 +22,7 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("fa2824a5-6dfb-4dd3-8670-567f9088faf7")]
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
+// Using semantic versioning now
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.2.2")]
-[assembly: AssemblyFileVersion("0.0.2.2")]
+[assembly: AssemblyVersion("2.1.2")]
+[assembly: AssemblyFileVersion("2.1.2")]
