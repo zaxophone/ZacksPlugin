@@ -1,13 +1,6 @@
 ﻿using Microsoft.Win32;
-using Microsoft;
-using Microsoft.Win32.SafeHandles;
 using PluginAPI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace ZacksPlugin
 {
@@ -21,7 +14,7 @@ namespace ZacksPlugin
             }
         }
 
-        //Needed only if you are doing advanced things... 
+        //Needed only if you are doing semi-advanced things... apparently like I am
         public void LoadMethod()
         {
             throw new NotImplementedException();
@@ -33,22 +26,33 @@ namespace ZacksPlugin
             throw new NotImplementedException();
         }
 
-        //Loaded before everything else
+        //Loaded before everything else- obviously
         public void PreloadMethod()
         {
-            string ext = ".aqua";
-            string aquac = Directory.GetCurrentDirectory();
-            public static DirectoryInfo GetParent(aquac)
+            string ext = (".aqua");
+            string aquac = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
             string aquaexe = (aquac + "\\AquaConsole.exe");
-            RegistryKey key = Registry.ClassesRoot.CreateSubKey(ext);
-            key.SetValue("", "AquaConsole");
-            key.Close();
+            string newkeym = @"HKEY_CLASSES_ROOT\.aqua";
+            if (Registry.GetValue(newkeym, "AquaConsole", null) == null)
+            {
+                RegistryKey aquakey = Registry.ClassesRoot.CreateSubKey(ext);
+                aquakey.SetValue("", "AquaConsole");
+                aquakey.Close();
 
-            key = Registry.ClassesRoot.CreateSubKey(ext + "\\Shell\\Open\\command");
-            //key = key.CreateSubKey("command");
+                aquakey = Registry.ClassesRoot.CreateSubKey(ext + "\\Shell\\Open\\command");
+                aquakey = aquakey.CreateSubKey("command");
 
-            key.SetValue("", "\"" + Application.ExecutablePath + "\" \"%L\"");
-            key.Close();
+                aquakey.SetValue("", "\"" + aquaexe + "\" \"%L\"");
+                aquakey.Close();
+
+                aquakey = Registry.ClassesRoot.CreateSubKey(ext + "\\DefaultIcon");
+                aquakey.SetValue("", aquac + "\\Resources\\icon.ico");
+                aquakey.Close();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

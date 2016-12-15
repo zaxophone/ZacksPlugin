@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\..\..\DotNetZipLib-DevKit-v1.9\zip-v1.9\Release\Ionic.Zip.dll</HintPath>
+      <HintPath>..\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="PluginAPI">
       <HintPath>..\references\PluginAPI.dll</HintPath>
@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\aqua.cs" />
-    <Compile Include="Commands\nyan.cs" />
     <Compile Include="Commands\update.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
