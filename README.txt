@@ -1,4 +1,4 @@
-This plugin adds 4 new commands to the console.
+This plugin adds 2 new commands to the console.
 
 AQUA- Runs a file in native AquaConsole code- supports plugins- Usage: cd <dir> then aqua <filename>
 UPDATE- Downloads a currently available release (not archive) of AquaConsole- Usage: cd <aquaconsole program dir> then update <version>
