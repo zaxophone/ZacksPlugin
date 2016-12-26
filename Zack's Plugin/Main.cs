@@ -43,11 +43,7 @@ namespace ZacksPlugin
                 aquakey = aquakey.CreateSubKey("command");
 
                 aquakey.SetValue("", "\"" + aquaexe + "\" \"%L\"");
-                aquakey.Close();
-
-                aquakey = Registry.ClassesRoot.CreateSubKey(ext + "\\DefaultIcon");
-                aquakey.SetValue("", aquac + "\\Resources\\icon.ico");
-                aquakey.Close();
+                aquakey.Close()
             }
             else
             {
