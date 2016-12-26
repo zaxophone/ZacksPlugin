@@ -21,7 +21,7 @@ class update : ICommand
     {
         get
         {
-            return "Tries to update. Usage: \"update <release number>.\" CD to program dir first.";
+            return "Tries to update. CD to program dir first.";
         }
     }
 
@@ -36,6 +36,8 @@ class update : ICommand
         string pluginsFolder = (fileName + "\\plugins");
         string newPluginsFolder = (releaseFolder + "\\plugins");
 
+        if release == ("help"){
+        Console.WriteLine("Usage: update version");}
         using (var client = new WebClient())
         {
             if (!Utility.FileOrDirectoryExists(fileName))
@@ -65,7 +67,7 @@ class update : ICommand
                         zip3.ExtractAll(newPluginsFolder);
                     }
                     Console.WriteLine("Successfully copied over plugins");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(8000);
                     File.Delete(zippi);
             }
         }
