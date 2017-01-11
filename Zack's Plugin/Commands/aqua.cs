@@ -31,7 +31,7 @@ namespace AquaConsole.Commands
                 List<List<string>> groups = new List<List<string>>();
                 foreach (var line in File.ReadAllLines(cheese))
                 {
-                    string AquaConsoleExe = (Directory.GetCurrentDirectory() + "\\AquaConsole.exe");
+                    string AquaConsoleExe = (Assembly.GetExecutingAssembly().Location + "\\AquaConsole.exe");
                     string[] readText = File.ReadAllLines(cheese);
 
                     Process ac = new Process();
