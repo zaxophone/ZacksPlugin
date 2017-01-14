@@ -4,8 +4,8 @@ using System.IO;
 using System.Net;
 //necessary for compression
 using Ionic.Zip;
-//---------too bad, really
 using System.Threading;
+using System.Reflection;
 
 class update : ICommand
 {
@@ -30,13 +30,13 @@ class update : ICommand
         string cheese = (string.Join("", p));
         string release = cheese;
         string remoteUri = ("https://github.com/lukasdragon/AquaConsole/releases/download/" + release + "/AquaConsole.zip");
-        string fileName = Directory.GetCurrentDirectory();
+        string fileName = Assembly.GetExecutingAssembly().Location;
         string zipname = (fileName + "\\AquaConsole.zip");
         string releaseFolder = (fileName + "\\" + release);
         string pluginsFolder = (fileName + "\\plugins");
         string newPluginsFolder = (releaseFolder + "\\plugins");
 
-        if release == ("help"){
+        if (release == ("help")){
         Console.WriteLine("Usage: update version");}
         using (var client = new WebClient())
         {
