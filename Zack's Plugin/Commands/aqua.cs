@@ -20,34 +20,41 @@ namespace AquaConsole.Commands
         {
             get
             {
-                return "Runs a file in AquaConsole native language- Usage: \"aqua <filename>\" ";
+                return "Runs a file in AquaConsole native language";
             }
         }
 
         public void CommandMethod(string[] p)
         {
             string cheese = (string.Join("", p));
-            if (Utility.FileOrDirectoryExists(cheese))
+            if (cheese == "help")
             {
-                List<List<string>> groups = new List<List<string>>();
-                foreach (var line in File.ReadAllLines(cheese))
-                {
-                    string AquaConsoleExe = (Assembly.GetExecutingAssembly().Location + "\\AquaConsole.exe");
-                    string[] readText = File.ReadAllLines(cheese);
-
-                    Process ac = new Process();
-                    ac.StartInfo.FileName = AquaConsoleExe;
-                    ac.StartInfo.UseShellExecute = false;
-                    ac.StartInfo.RedirectStandardInput = true;
-
-                    ac.Start();
-
-                    StreamWriter acsw = ac.StandardInput;
-                    acsw.WriteLine(line);
-                }
+                Utility.NotifyWriteLine("Usage: cd (directory) then aqua (filename with ext)");
             }
             else
-                Utility.ErrorWriteLine("Warning- File is nonexistent or you have insufficient permissions to access it or your file system is corrupt or there's a system I/O error");
+            {
+                if (Utility.FileOrDirectoryExists(cheese))
+                {
+                    List<List<string>> groups = new List<List<string>>();
+                    foreach (var line in File.ReadAllLines(cheese))
+                    {
+                        string AquaConsoleExe = (Assembly.GetExecutingAssembly().Location + "\\AquaConsole.exe");
+                        string[] readText = File.ReadAllLines(cheese);
+
+                        Process ac = new Process();
+                        ac.StartInfo.FileName = AquaConsoleExe;
+                        ac.StartInfo.UseShellExecute = false;
+                        ac.StartInfo.RedirectStandardInput = true;
+
+                        ac.Start();
+
+                        StreamWriter acsw = ac.StandardInput;
+                        acsw.WriteLine(line);
+                    }
+                }
+                else
+                    Utility.ErrorWriteLine("Warning- File is nonexistent or you have insufficient permissions to access it or your file system is corrupt or there's a system I/O error");
+            }
         }
     }
 }

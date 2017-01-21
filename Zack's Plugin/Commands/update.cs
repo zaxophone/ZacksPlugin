@@ -21,7 +21,7 @@ class update : ICommand
     {
         get
         {
-            return "Tries to update. CD to program dir first.";
+            return "Tries to update.";
         }
     }
 
@@ -36,16 +36,20 @@ class update : ICommand
         string pluginsFolder = (fileName + "\\plugins");
         string newPluginsFolder = (releaseFolder + "\\plugins");
 
-        if (release == ("help")){
-        Console.WriteLine("Usage: update version");}
-        using (var client = new WebClient())
+        if (release == ("help"))
         {
-            if (!Utility.FileOrDirectoryExists(fileName))
+            Console.WriteLine("Usage: update (version)");
+        }
+        else
+        {
+            using (var client = new WebClient())
             {
-                Console.WriteLine("AquaConsole release already found! Please delete directory \\" + release + " and try again.");
-            }
-            else
-            {
+                if (!Utility.FileOrDirectoryExists(fileName))
+                {
+                    Console.WriteLine("AquaConsole release already found! Please delete directory \\" + release + " and try again.");
+                }
+                else
+                {
                     WebClient temporaryw = new WebClient();
                     temporaryw.DownloadFile(remoteUri, zipname);
                     using (ZipFile zip1 = ZipFile.Read(zipname))
@@ -69,6 +73,7 @@ class update : ICommand
                     Console.WriteLine("Successfully copied over plugins");
                     Thread.Sleep(8000);
                     File.Delete(zippi);
+                }
             }
         }
     }
