@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 //necessary for compression
 using Ionic.Zip;
+//
 using System.Threading;
 using System.Reflection;
 
@@ -21,7 +22,7 @@ class update : ICommand
     {
         get
         {
-            return "Tries to update.";
+            return "Updates to the specified version";
         }
     }
 
@@ -29,7 +30,7 @@ class update : ICommand
     {
         string cheese = (string.Join("", p));
         string release = cheese;
-        string remoteUri = ("https://github.com/lukasdragon/AquaConsole/releases/download/" + release + "/AquaConsole.zip");
+        string remoteUri = ("https://github.com/greyblockgames/AquaConsole/releases/download/" + release + "/AquaConsole.zip");
         string fileName = Assembly.GetExecutingAssembly().Location;
         string zipname = (fileName + "\\AquaConsole.zip");
         string releaseFolder = (fileName + "\\" + release);
@@ -46,7 +47,7 @@ class update : ICommand
             {
                 if (!Utility.FileOrDirectoryExists(fileName))
                 {
-                    Console.WriteLine("AquaConsole release already found! Please delete directory \\" + release + " and try again.");
+                    Console.WriteLine("AquaConsole release already found!");
                 }
                 else
                 {
